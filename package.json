@@ -1,0 +1,11 @@
+{
+  "main": "./integration.js",
+  "name": "MongoDB",
+  "description": "Search your data in real-time",
+  "version": "3.0.0-alpha",
+  "private": true,
+  "dependencies": {
+    "mongodb": "^3.6.2",
+    "lodash": "^4.17.20"
+  }
+}
