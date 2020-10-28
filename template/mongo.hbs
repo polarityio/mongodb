@@ -1,0 +1,9 @@
+<h1 class="p-title">{{fa-icon "user-circle" fixedWidth=true}} {{block.data.details.name}}</h1>
+{{#each-in block.data.details as |key value|}}
+  {{#if value}}
+    <div>
+      <span class="p-key">{{humanize key}}:</span>
+      <span class="p-value">{{value}}</span>
+    </div>
+  {{/if}}
+{{/each-in}}

@@ -4,14 +4,14 @@ module.exports = {
   logging: { level: 'info' },
   entityTypes: ['*'],
   styles: ['./styles/mongo.less'],
-  // block: {
-  //   component: {
-  //     file: './component/mongo.js'
-  //   },
-  //   template: {
-  //     file: './template/mongo.hbs'
-  //   }
-  // },
+  block: {
+    component: {
+      file: './component/mongo.js'
+    },
+    template: {
+      file: './template/mongo.hbs'
+    }
+  },
   request: {
     // Provide the path to your certFile. Leave an empty string to ignore this option.
     // Relative paths are relative to the integration's root directory
