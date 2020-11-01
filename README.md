@@ -1,10 +1,14 @@
 # Polarity MongoDB Integration
 
+![image](https://img.shields.io/badge/status-alpha-yellow.svg)
+
 Polarity's MongoDB integration can search your MongoDB instance using a user provided search and return results via the Polarity Overlay Window or HUD. The integration supports updating `string` fields in the document.  In addition, the integration has the ability to add new fields to a document.
 
 > Note that by default the MongoDB integration will receive ALL entity types. It is important that you select the "Manage Integration Data" option and turn off entity types you do not want sent to your MongoDB integration.
 
 > This integration is currently under development. Please contact support@polarity.io if you are interested in using it.
+
+<img src="./assets/overlay.png" width="50%">
 
 ## MongoDB Integration Options
 
