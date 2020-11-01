@@ -68,8 +68,7 @@ module.exports = {
     {
       key: 'database',
       name: 'MongoDB Database to Search',
-      description:
-        'The MongoDB database to search.  Integration must be restarted if you modify this option.',
+      description: 'The MongoDB database to search.  Integration must be restarted if you modify this option.',
       default: '',
       type: 'text',
       userCanEdit: true,
@@ -87,10 +86,27 @@ module.exports = {
     {
       key: 'query',
       name: 'Search Query',
+      description: 'The search query to execute as JSON.',
+      default: '{}',
+      type: 'text',
+      userCanEdit: true,
+      adminOnly: false
+    },
+    {
+      key: 'documentTitleField',
+      name: 'Document Title Field',
+      description: 'The name of the document field that you would like to use as your title in the details block.',
+      default: '_id',
+      type: 'text',
+      userCanEdit: true,
+      adminOnly: false
+    },
+    {
+      key: 'documentTitleIcon',
+      name: 'Document Title Icon',
       description:
-        'The search query to execute as JSON.',
-      default:
-        '{}',
+        'The name of the font awesome icon you would like to set.  You can choose from here https://fontawesome.com/icons?d=gallery&s=solid.  Option must be set to "User can view only" or "User can view and edit"',
+      default: 'file',
       type: 'text',
       userCanEdit: true,
       adminOnly: false
@@ -99,7 +115,7 @@ module.exports = {
       key: 'summaryFields',
       name: 'Summary Fields',
       description:
-        'Comma delimited list of fields to include as part of the summary (no spaces between commas).  These fields must be returned by your search query.  You can specify nested fields using JSON dot notation.',
+        'Comma delimited list of fields to include as part of the summary (no spaces between commas).  These fields must be returned by your search query and are case sensitive.  You can specify nested fields using JSON dot notation.',
       default: '_id',
       type: 'text',
       userCanEdit: true,
@@ -111,6 +127,18 @@ module.exports = {
       description: 'If checked, field names will be included as part of the summary fields.',
       default: true,
       type: 'boolean',
+      userCanEdit: true,
+      adminOnly: false
+    },
+    {
+      key: 'addableFields',
+      name: 'Addable String Fields',
+      description:
+        'Comma delimited list of fields that can be added to a returned document through the Overlay Window.  ' +
+        'This option must be set to "User can view only" or "User can view and edit".  All fields will be added as string values.  ' +
+        'The field is case sensitive.',
+      default: '',
+      type: 'text',
       userCanEdit: true,
       adminOnly: false
     }
