@@ -95,7 +95,7 @@ module.exports = {
     {
       key: 'documentTitleField',
       name: 'Document Title Field',
-      description: 'The name of the document field that you would like to use as your title in the details block.',
+      description: 'The name of the document field that you would like to use as your title in the details block in the integration\'s template. Option must be set to "User can view only" or "User can view and edit".',
       default: '_id',
       type: 'text',
       userCanEdit: true,
@@ -105,7 +105,7 @@ module.exports = {
       key: 'documentTitleIcon',
       name: 'Document Title Icon',
       description:
-        'The name of the font awesome icon you would like to set.  You can choose from here https://fontawesome.com/icons?d=gallery&s=solid.  Option must be set to "User can view only" or "User can view and edit"',
+        'The name of the font awesome icon you would like to set.  You can choose from here https://fontawesome.com/icons?d=gallery&s=solid.  Option must be set to "User can view only" or "User can view and edit".',
       default: 'file',
       type: 'text',
       userCanEdit: true,
