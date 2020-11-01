@@ -131,6 +131,16 @@ module.exports = {
       adminOnly: false
     },
     {
+      key: 'enabledDocumentUpdating',
+      name: 'Enable Document Updating',
+      description:
+        'If checked, the document fields that are strings can be updated from the Overlay Window. This options must be set to "User can view only" or "User can view and edit"',
+      default: true,
+      type: 'boolean',
+      userCanEdit: true,
+      adminOnly: false
+    },
+    {
       key: 'addableFields',
       name: 'Addable String Fields',
       description:

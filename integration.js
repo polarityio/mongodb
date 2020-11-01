@@ -24,19 +24,24 @@ function _isConnected(client) {
 async function getClient(options) {
   try {
     if (!_isConnected(_client)) {
-      _client = new MongoClient(options.connectionString, {
+      const connectionOptions = {
         useUnifiedTopology: true,
-        appname: 'Polarity',
-        auth: {
+        appname: 'Polarity'
+      };
+
+      if (options.username) {
+        connectionOptions.auth = {
           username: options.username,
           password: options.password
-        }
-      });
+        };
+      }
+
+      _client = new MongoClient(options.connectionString, connectionOptions);
       await _client.connect();
-      _database = _client.db(options.database);
+      _database = _client.db(options.database.trim());
       await _database.command({ ping: 1 });
       Logger.info('Successfully connected to MongoDB server');
-      _collection = _database.collection(options.collection);
+      _collection = _database.collection(options.collection.trim());
     }
     return { client: _client, database: _database, collection: _collection };
   } catch (connectionError) {

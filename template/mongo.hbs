@@ -57,7 +57,7 @@
         </h1>
       {{else}}
         <div class="{{concat "depth-" entry.depth}}">
-          {{#if (eq entry.mongoType "string")}}
+          {{#if (and (eq entry.mongoType "string") block.userOptions.enabledDocumentUpdating)}}
             <span class="p-key" {{action "showUpdateModal" index}}>{{humanize entry.displayName}} {{fa-icon "edit" fixedWidth=true class="edit-icon"}}:</span>
           {{else}}
             <span class="p-key">{{humanize entry.displayName}}:</span>
