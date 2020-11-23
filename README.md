@@ -47,20 +47,26 @@ The MongoDB collection to search.
 
 > The integration must be restarted if you modify this option.
 
-### Search Query
+### Search Filter
 
-The search query to execute as JSON.  To specify the entity looked up by Polarity use the string `{{entity}}`.  The string `{{entity}}` will be replaced by the entity value to be searched.
+The search filter to execute.  To specify the entity looked up by Polarity use the string `{{entity}}`.  The string `{{entity}}` will be replaced by the entity value to be searched.
 
 As an example, the following search will return the document where the `name` field matches the entity to be looked up:
 
 ```
-{ "name": "{{entity}}"} 
+{ name: "{{entity}}"} 
 ```
 
 In this example, the integration will search either the `name` or `email` fields:
 
 ```
-{ "$or": [{ "name": "{{entity}}" }, {"email":"{{entity}}"} ]}
+{ $or: [{ name: "{{entity}}" }, {email:"{{entity}}"} ]}
+```
+
+The following search uses a regex to find partial matches on the name field:
+
+```
+{ name: /{{entity}}/ }
 ```
 
 ### Document Title Field
