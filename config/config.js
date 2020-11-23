@@ -84,9 +84,9 @@ module.exports = {
       adminOnly: false
     },
     {
-      key: 'query',
-      name: 'Search Query',
-      description: 'The search query to execute as JSON.',
+      key: 'filter',
+      name: 'Search Filter',
+      description: 'The search filter to execute.  Accepts the same filters as Mongo Compass.  You can substitute the entity value using `{{entity}}`.',
       default: '{}',
       type: 'text',
       userCanEdit: true,

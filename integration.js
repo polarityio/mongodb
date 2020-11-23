@@ -1,6 +1,7 @@
 'use strict';
 
 const { MongoClient, Decimal128, ObjectID, Double, Int32, Long, Binary } = require('mongodb');
+const mongoQueryParse = require('mongodb-query-parser');
 const _ = require('lodash');
 
 let Logger;
@@ -75,15 +76,19 @@ async function doLookup(entities, options, cb) {
 
   try {
     const tasks = entities.map((entity) => {
-      const queryString = options.query.replace(entityTemplateReplacementRegex, entity.value);
-      Logger.debug(queryString);
-      const queryObject = JSON.parse(queryString);
+      const queryString = options.filter.replace(entityTemplateReplacementRegex, entity.value);
+      const queryObject = mongoQueryParse.parseFilter(queryString);
+      Logger.debug({ queryObject }, 'Query Object');
       return new Promise(async (resolve, reject) => {
-        const data = await collection.findOne(queryObject);
-        resolve({
-          entity,
-          data
-        });
+        try {
+          const data = await collection.findOne(queryObject);
+          resolve({
+            entity,
+            data
+          });
+        } catch (queryError) {
+          reject(queryError);
+        }
       });
     });
 
@@ -473,13 +478,13 @@ function validateOptions(userOptions, cb) {
     });
   }
 
-  if (typeof userOptions.query.value === 'string' && userOptions.query.value.length > 0) {
+  if (typeof userOptions.filter.value === 'string' && userOptions.filter.value.length > 0) {
     try {
-      JSON.parse(userOptions.query.value);
+      mongoQueryParse.parseFilter(userOptions.filter.value);
     } catch (e) {
       errors.push({
-        key: 'query',
-        message: 'Query is not valid JSON.'
+        key: 'filter',
+        message: `Invalid Filter: ${e.message}`
       });
     }
   }

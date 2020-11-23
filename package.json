@@ -2,10 +2,11 @@
   "main": "./integration.js",
   "name": "MongoDB",
   "description": "Search your documents in real-time",
-  "version": "3.1.0-alpha",
+  "version": "3.2.0-alpha",
   "private": true,
   "dependencies": {
     "mongodb": "^3.6.2",
+    "mongodb-query-parser": "^2.1.2",
     "lodash": "^4.17.20"
   }
 }
