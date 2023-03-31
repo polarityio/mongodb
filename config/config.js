@@ -3,6 +3,7 @@ module.exports = {
   acronym: 'MONGO',
   logging: { level: 'info' },
   entityTypes: ['*'],
+  defaultColor: 'light-gray',
   styles: ['./styles/mongo.less'],
   block: {
     component: {
@@ -86,7 +87,8 @@ module.exports = {
     {
       key: 'filter',
       name: 'Search Filter',
-      description: 'The search filter to execute.  Accepts the same filters as Mongo Compass.  You can substitute the entity value using `{{entity}}`.',
+      description:
+        'The search filter to execute.  Accepts the same filters as Mongo Compass.  You can substitute the entity value using `{{entity}}`.',
       default: '{}',
       type: 'text',
       userCanEdit: true,
@@ -95,7 +97,8 @@ module.exports = {
     {
       key: 'documentTitleField',
       name: 'Document Title Field',
-      description: 'The name of the document field that you would like to use as your title in the details block in the integration\'s template. Option must be set to "User can view only" or "User can view and edit".',
+      description:
+        'The name of the document field that you would like to use as your title in the details block in the integration\'s template. Option must be set to "User can view only" or "User can view and edit".',
       default: '_id',
       type: 'text',
       userCanEdit: true,

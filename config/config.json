@@ -8,6 +8,7 @@
   "entityTypes": [
     "*"
   ],
+  "defaultColor": "light-gray",
   "styles": [
     "./styles/mongo.less"
   ],
