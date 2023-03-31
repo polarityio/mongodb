@@ -1,0 +1,88 @@
+{{#if globalErrorObject}}
+  <div class="alert alert-danger" role="alert">
+    <div>
+      {{fa-icon icon="exclamation-triangle" fixedWidth=true}} {{globalErrorObject.detail}}
+    </div>
+    {{#if globalErrorObject.message}}
+      <div class="mt-1">{{message}}</div>
+    {{/if}}
+    {{#if globalErrorObject.stack}}
+      <pre class="mb-0">{{globalErrorObject.stack}}</pre>
+    {{/if}}
+  </div>
+{{/if}}
+
+<div class="action-btn-container">
+  <span class="add-button" {{action "refreshDocument"}}>
+    {{fa-icon icon="sync-alt" fixedWidth=true}} Refresh
+  </span>
+</div>
+
+{{#if (and block.detailsLoaded (not globalErrorObject))}}
+  <div class="add-btn-container">
+  {{#each addableFields as |addableField|}}
+    <span class="add-button" {{action "showAddModal" true addableField}}>
+      {{fa-icon icon="plus-circle" fixedWidth=true}} Add {{humanize addableField}}
+    </span>
+  {{/each}}
+  </div>
+{{/if}}
+
+{{#if showAddModal}}
+  <div class="update-modal">
+    <form>
+      <div class="form-group">
+        <label for="exampleInputEmail1">Add {{humanize fieldNameToAdd}}</label>
+        {{input placeholder="value" type="text" class="form-control" value=shadowUpdateValue}}
+      </div>
+      <button type="submit" disabled={{isUpdating}} {{action "addField"}} class="float-right btn btn-sm btn-secondary">
+        {{#if isUpdating}}
+          {{fa-icon "spinner-third" spin=true fixedWidth=true}}
+        {{else}}
+          {{fa-icon "save" fixedWidth=true}}
+        {{/if}}
+        Add field
+      </button>
+      <button type="submit" disabled={{isUpdating}} {{action "showAddModal" false}} class="float-right mr-1 btn btn-sm btn-outline-secondary">Cancel</button>
+    </form>
+  </div>
+{{/if}}
+<h1 class="p-title">{{fa-icon icon=block.userOptions.documentTitleIcon fixedWidth=true}} {{details.title}}</h1>
+<div class="wrapper">
+  {{#each block.data.details.fields as | entry index|}}
+      {{#if (eq entry.type "title")}}
+        <h1 class="p-title {{concat "depth-" entry.depth}}">
+          <span class="{{concat "block-id-" entry.blockId}}">{{fa-icon icon="circle" class="list-icon" fixedWidth=true}}</span>
+          {{humanize entry.displayName}}
+        </h1>
+      {{else}}
+        <div class="{{concat "depth-" entry.depth}}">
+          {{#if (and (eq entry.mongoType "string") block.userOptions.enabledDocumentUpdating)}}
+            <span class="p-key" {{action "showUpdateModal" index}}>{{humanize entry.displayName}} {{fa-icon "edit" fixedWidth=true class="edit-icon"}}:</span>
+          {{else}}
+            <span class="p-key">{{humanize entry.displayName}}:</span>
+          {{/if}}
+          <span class="p-value">{{entry.value}}</span>
+        </div>
+      {{/if}}
+      {{#if entry.__showUpdateModal}}
+        <div class="update-modal">
+          <form>
+            <div class="form-group">
+              <label for="exampleInputEmail1">{{humanize entry.displayName}}</label>
+              {{input type="text" class="form-control" value=shadowUpdateValue}}
+            </div>
+            <button type="submit" disabled={{isUpdating}} {{action "updateDocument" index}} class="float-right btn btn-sm btn-secondary">
+              {{#if isUpdating}}
+                {{fa-icon "spinner-third" spin=true fixedWidth=true}}
+              {{else}}
+                {{fa-icon "save" fixedWidth=true}}
+              {{/if}}
+              Update field
+            </button>
+            <button type="submit" disabled={{isUpdating}} {{action "hideUpdateModal" index}} class="float-right mr-1 btn btn-sm btn-outline-secondary">Cancel</button>
+          </form>
+        </div>
+      {{/if}}
+  {{/each}}
+</div>

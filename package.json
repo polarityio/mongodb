@@ -1,0 +1,12 @@
+{
+  "name": "MongoDB",
+  "version": "3.2.1",
+  "main": "./integration.js",
+  "description": "Search your documents in real-time",
+  "private": true,
+  "dependencies": {
+    "mongodb": "^3.6.2",
+    "mongodb-query-parser": "^2.1.2",
+    "lodash": "^4.17.20"
+  }
+}
