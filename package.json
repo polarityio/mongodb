@@ -5,7 +5,7 @@
   "description": "Search your documents in real-time",
   "private": true,
   "dependencies": {
-    "mongodb": "^3.6.2",
+    "mongodb": "^3.7.4",
     "mongodb-query-parser": "^2.1.2",
     "lodash": "^4.17.20"
   }
