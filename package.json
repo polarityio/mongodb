@@ -6,7 +6,7 @@
   "private": true,
   "dependencies": {
     "mongodb": "^3.6.2",
-    "mongodb-query-parser": "^2.1.2",
+    "mongodb-query-parser": "^2.5.0",
     "lodash": "^4.17.20"
   }
 }
