@@ -6,12 +6,21 @@
     "level": "info"
   },
   "entityTypes": [
-    "*"
+    "IPv4",
+    "IPv4CIDR",
+    "IPv6",
+    "domain",
+    "url",
+    "MD5",
+    "SHA1",
+    "SHA256",
+    "email",
+    "cve",
+    "MAC",
+    "string"
   ],
   "defaultColor": "light-gray",
-  "styles": [
-    "./styles/mongo.less"
-  ],
+  "styles": ["./styles/mongo.less"],
   "block": {
     "component": {
       "file": "./component/mongo.js"
@@ -19,13 +28,6 @@
     "template": {
       "file": "./template/mongo.hbs"
     }
-  },
-  "request": {
-    "cert": "",
-    "key": "",
-    "passphrase": "",
-    "ca": "",
-    "proxy": ""
   },
   "options": [
     {
